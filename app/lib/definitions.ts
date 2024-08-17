@@ -32,11 +32,16 @@ export type Revenue = {
 };
 
 export type LatestInvoice = {
+  // id: string;
+  // name: string;
+  // image_url: string;
+  // email: string;
+  // amount: string;
   id: string;
-  name: string;
-  image_url: string;
-  email: string;
+  customer_id: string;
   amount: string;
+  status: string;
+  date: string;
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function
