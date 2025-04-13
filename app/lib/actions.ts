@@ -37,7 +37,6 @@ export async function authenticate(
 }
 
 
-
 const FormSchema = z.object({
     id: z.string(),
     customerId: z.string(),
@@ -90,7 +89,7 @@ export async function updateInvoice(id: string, formData: FormData) {
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function createInvoice(formData: FormData) {
-    //1.
+    1.
     // const rawFormData = {
     //     customerId: formData.get('customerId'),
     //     amount: formData.get('amount'),
@@ -98,13 +97,13 @@ export async function createInvoice(formData: FormData) {
     // };
 
     //2.
-    const rawFormData = {};
-    for (const item of formData.entries()) {
-        rawFormData[`${item[0]}`] = item[1];
-    }
+    // const rawFormData = {};
+    // for (const item of formData.entries()) {
+    //     rawFormData[`${item[0]}`] = item[1];
+    // }
 
     //3.
-    //const rawFormData = Object.fromEntries(formData.entries())
+    const rawFormData = Object.fromEntries(formData.entries())
 
     console.log(typeof rawFormData?.amount);
     console.log(rawFormData);
