@@ -14,7 +14,12 @@ export async function authenticate(
     formData: FormData,
 ) {
     try {
-        await signIn('credentials', formData);
+        // Extract form data as an object
+        const formDataObject = Object.fromEntries(formData.entries());
+
+        // Call signIn with the extracted form data
+        await signIn('credentials', formDataObject);
+
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
@@ -24,6 +29,9 @@ export async function authenticate(
                     return 'Something went wrong.';
             }
         }
+
+        // Log unexpected errors for debugging
+        console.error(error);
         throw error;
     }
 }
